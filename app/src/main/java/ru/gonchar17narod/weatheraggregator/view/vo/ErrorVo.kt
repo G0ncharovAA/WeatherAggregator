@@ -1,9 +1,11 @@
 package ru.gonchar17narod.weatheraggregator.view.vo
 
-sealed class ErrorVo {
+sealed class ErrorVo(
+    val embedException: Exception
+) {
 
-    class PermissionError(): ErrorVo()
-    class LocationError(): ErrorVo()
-    class NetworkError(): ErrorVo()
-    class UnknownError(): ErrorVo()
+    class PermissionError(embedException: Exception): ErrorVo(embedException)
+    class LocationError(embedException: Exception): ErrorVo(embedException)
+    class NetworkError(embedException: Exception): ErrorVo(embedException)
+    class UnknownError(embedException: Exception): ErrorVo(embedException)
 }

@@ -9,10 +9,11 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 import ru.gonchar17narod.weatheraggregator.business.DataState
+import ru.gonchar17narod.weatheraggregator.business.extensions.LocationException
 import ru.gonchar17narod.weatheraggregator.business.iRepositories.ILocationRepository
 import ru.gonchar17narod.weatheraggregator.data.mocked.mockIfNull
-import java.lang.Exception
 import javax.inject.Inject
+import kotlin.Exception
 
 class LocationRepository @Inject constructor(
     val fusedLocationProviderClient: FusedLocationProviderClient
@@ -28,6 +29,10 @@ class LocationRepository @Inject constructor(
                 ) {
                     addOnSuccessListener {
                         offer(DataState.Success(it.mockIfNull()))
+//                        when (it) {
+//                            is Location -> offer(DataState.Success(it))
+//                            else -> offer(DataState.Error(LocationException()))
+//                        }
                     }
                     addOnFailureListener {
                         offer(DataState.Error(it))

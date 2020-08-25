@@ -9,6 +9,7 @@ import ru.gonchar17narod.weatheraggregator.business.DataState
 import ru.gonchar17narod.weatheraggregator.business.useCases.GetWeatherUseCase
 import ru.gonchar17narod.weatheraggregator.view.extensions.toVo
 import ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo
+import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
 
 class MainViewModel @ViewModelInject constructor(
     private val weatherInteractor: GetWeatherUseCase,
@@ -23,8 +24,8 @@ class MainViewModel @ViewModelInject constructor(
     val liveDailyWeatherVo: MutableLiveData<List<DailyWeatherVo>>
         get() = _liveDailyWeatherVo
 
-    private val _liveErrorVo = MutableLiveData<Exception>()
-    val liveErrorVo: MutableLiveData<Exception>
+    private val _liveErrorVo = MutableLiveData<ErrorVo>()
+    val liveErrorVo: MutableLiveData<ErrorVo>
         get() = _liveErrorVo
 
     val textState = MutableLiveData<String>()
@@ -53,7 +54,7 @@ class MainViewModel @ViewModelInject constructor(
                         }
                     }
                     is DataState.Error -> {
-                        _liveErrorVo.postValue(it.exception)
+                        _liveErrorVo.postValue(it.exception.toVo())
                         _liveProgress.postValue(false)
                         textState.postValue("error : ${it.exception.message}")
                     }
