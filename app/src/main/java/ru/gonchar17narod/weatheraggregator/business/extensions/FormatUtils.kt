@@ -1,7 +1,8 @@
 package ru.gonchar17narod.weatheraggregator.business.extensions
 
 import ru.gonchar17narod.weatheraggregator.business.entities.DayTimes
-import java.util.*
+import java.util.Date
+import java.util.Calendar
 
 fun Double.kelvinToCelsius() =
     this - 273

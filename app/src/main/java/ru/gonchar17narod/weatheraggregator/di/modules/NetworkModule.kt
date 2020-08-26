@@ -18,7 +18,7 @@ class NetworkModule {
 
     @Provides
     @ActivityRetainedScoped
-    fun provideInterceptor() =
+    fun provideInterceptor(): Interceptor =
         Interceptor {
             with(
                 it.request()
@@ -46,27 +46,34 @@ class NetworkModule {
     @Provides
     @ActivityRetainedScoped
     fun provideOohttpclient(
-        intercaptor: Interceptor
-    ) =
+        interceptor: Interceptor
+    ): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor(intercaptor)
+            .addInterceptor(interceptor)
             .build()
 
     @Provides
     @ActivityRetainedScoped
-    fun provideGsonCoverterFactory() =
+    fun provideGsonCoverterFactory(): GsonConverterFactory =
         GsonConverterFactory.create()
 
     @Provides
     @ActivityRetainedScoped
-    fun provideOpenweathermapService(
+    fun provideRetrofit(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
-    ): OpenweathermapService =
+    ): Retrofit =
         Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
-            .create(OpenweathermapService::class.java)
+
+
+    @Provides
+    @ActivityRetainedScoped
+    fun provideOpenweathermapService(
+        retrofit: Retrofit
+    ): OpenweathermapService =
+        retrofit.create(OpenweathermapService::class.java)
 }

@@ -1,6 +1,5 @@
 package ru.gonchar17narod.weatheraggregator.data.dto.generated
 
-
 import com.google.gson.annotations.SerializedName
 
 data class ForecastDTO(
