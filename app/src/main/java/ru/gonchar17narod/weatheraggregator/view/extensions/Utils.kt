@@ -7,4 +7,4 @@ fun canGoFurther(
     itemCount: Int,
     position: Int
 ) =
-    itemCount < position + 1
+    itemCount > position + 1
