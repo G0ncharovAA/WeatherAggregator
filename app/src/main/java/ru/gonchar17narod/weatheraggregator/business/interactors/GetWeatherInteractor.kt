@@ -1,6 +1,5 @@
 package ru.gonchar17narod.weatheraggregator.business.interactors
 
-
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
