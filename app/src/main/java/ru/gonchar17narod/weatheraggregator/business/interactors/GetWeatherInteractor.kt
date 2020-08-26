@@ -5,10 +5,8 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import ru.gonchar17narod.weatheraggregator.business.DataState
 import ru.gonchar17narod.weatheraggregator.business.entities.DailyWeather
-import ru.gonchar17narod.weatheraggregator.business.entities.WeatherEntity
 import ru.gonchar17narod.weatheraggregator.business.iRepositories.ILocationRepository
 import ru.gonchar17narod.weatheraggregator.business.iRepositories.IWeatherRepository
-import ru.gonchar17narod.weatheraggregator.business.extensions.concludeForecast
 import ru.gonchar17narod.weatheraggregator.business.extensions.toDailyWeatherList
 import ru.gonchar17narod.weatheraggregator.business.useCases.GetWeatherUseCase
 import javax.inject.Inject
