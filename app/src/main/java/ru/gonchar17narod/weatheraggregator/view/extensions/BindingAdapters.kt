@@ -62,13 +62,5 @@ fun ViewGroup.snackbarValues(
                 is ErrorVo.PermissionError -> this@snackbarValues.context.getString(R.string.error_permission)
                 is ErrorVo.UnknownError -> this@snackbarValues.context.getString(R.string.error_unknown)
             }
-        ).apply {
-            setAction(
-                context.getString(R.string.error_ok),
-                View.OnClickListener {
-                    
-                }
-            )
-        }
-            .show()
+        ).show()
     }
