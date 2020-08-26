@@ -7,5 +7,5 @@ fun ViewGroup.makeSnackbar(message: String) =
     Snackbar.make(
         this,
         message,
-        Snackbar.LENGTH_SHORT
+        Snackbar.LENGTH_INDEFINITE
     )

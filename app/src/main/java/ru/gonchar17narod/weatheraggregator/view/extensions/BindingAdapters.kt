@@ -1,12 +1,15 @@
 package ru.gonchar17narod.weatheraggregator.view.extensions
 
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
+import ru.gonchar17narod.weatheraggregator.R
 import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DayItem
 import ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo
+import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
 
 @BindingAdapter("app:textState")
 fun TextView.textState(
@@ -19,7 +22,8 @@ fun TextView.textState(
 fun TextView.itemTextData(
     dailyWeatherVo: DailyWeatherVo
 ) {
-    text = "today: ${dailyWeatherVo.date} \n ${dailyWeatherVo.conclusion.temp} celsius \n sky is ${dailyWeatherVo.conclusion.sky}"
+    text =
+        "today: ${dailyWeatherVo.date} \n ${dailyWeatherVo.conclusion.temp} celsius \n sky is ${dailyWeatherVo.conclusion.sky}"
 }
 
 @BindingAdapter("app:shouldBeSeen")
@@ -45,3 +49,26 @@ fun RecyclerView.weatherDataVo(
         }
     }
 }
+
+@BindingAdapter("app:snackbarValues")
+fun ViewGroup.snackbarValues(
+    error: ErrorVo?
+) =
+    error?.apply {
+        makeSnackbar(
+            when (error) {
+                is ErrorVo.NetworkError -> this@snackbarValues.context.getString(R.string.error_network)
+                is ErrorVo.LocationError -> this@snackbarValues.context.getString(R.string.error_location)
+                is ErrorVo.PermissionError -> this@snackbarValues.context.getString(R.string.error_permission)
+                is ErrorVo.UnknownError -> this@snackbarValues.context.getString(R.string.error_unknown)
+            }
+        ).apply {
+            setAction(
+                context.getString(R.string.error_ok),
+                View.OnClickListener {
+                    
+                }
+            )
+        }
+            .show()
+    }

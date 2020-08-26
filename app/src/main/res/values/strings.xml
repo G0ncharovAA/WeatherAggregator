@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Weather Aggregator</string>
+
+    <!--Error Messages-->
+    <string name="error_network">Cannot connect to server</string>
+    <string name="error_location">Could not determine location</string>
+    <string name="error_permission">Necessary permissions are not granted</string>
+    <string name="error_unknown">Unknown error. Please try again later</string>
+    <string name="error_ok">Try again</string>
 </resources>
