@@ -7,11 +7,15 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import ru.gonchar17narod.weatheraggregator.R
+import ru.gonchar17narod.weatheraggregator.business.entities.DayTimes
 import ru.gonchar17narod.weatheraggregator.business.entities.WeatherEntity
 import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DayItem
+import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DetailedItem
 import ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo
 import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
+import ru.gonchar17narod.weatheraggregator.view.vo.WeatherVo
 
 @BindingAdapter("app:textState")
 fun TextView.textState(
@@ -40,10 +44,10 @@ fun View.shouldBeSeen(seen: Boolean) {
 fun RecyclerView.weatherDataVo(
     weatherData: List<DailyWeatherVo>?
 ) {
-    weatherData?.apply {
-        (adapter as? GroupAdapter)?.apply {
-            clear()
-            addAll(
+    weatherData?.let {
+        (adapter as? GroupAdapter)?.let {
+            it.clear()
+            it.addAll(
                 weatherData.map {
                     DayItem(it)
                 }
@@ -78,6 +82,33 @@ fun TextView.skyText(sky: WeatherEntity.Drops) {
 @BindingAdapter("app:temp")
 fun TextView.temp(temp: String) {
     text = context.getString(R.string.temp_pattern).format(temp)
+}
+
+@BindingAdapter("app:dayTime")
+fun TextView.daytime(dayTime: DayTimes) {
+    text = context.getString(
+        when (dayTime) {
+            DayTimes.NIGHT -> R.string.night
+            DayTimes.MORNING -> R.string.morning
+            DayTimes.NOON -> R.string.noon
+            DayTimes.EVENING -> R.string.evening
+        }
+    )
+}
+
+@BindingAdapter("app:weatherDetailed")
+fun RecyclerView.weatherDetailed(
+    weatherDetailed: List<WeatherVo>
+) {
+    adapter =
+        ((adapter ?: GroupAdapter<GroupieViewHolder>()) as? GroupAdapter)?.apply {
+            clear()
+            addAll(
+                weatherDetailed.map {
+                    DetailedItem(it)
+                }
+            )
+        }
 }
 
 @BindingAdapter("app:snackbarValues")

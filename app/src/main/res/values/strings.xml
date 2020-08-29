@@ -16,5 +16,11 @@
     <string name="error_permission">Necessary permissions are not granted</string>
     <string name="error_unknown">Unknown error. Please try again later</string>
     <string name="error_ok">Try again</string>
+
     <string name="temp_pattern">%1$s C</string>
+    
+    <string name="night">Night</string>
+    <string name="morning">Morning</string>
+    <string name="noon">Noon</string>
+    <string name="evening">Evening</string>
 </resources>

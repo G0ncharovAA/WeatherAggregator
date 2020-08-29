@@ -1,22 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="dailyWeatherVo"
-            type="ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo" />
+            name="weatherVo"
+            type="ru.gonchar17narod.weatheraggregator.view.vo.WeatherVo" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/detailed_day_time_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="some wether"
-            android:textColor="@color/main_font_color" />
-    </LinearLayout>
+            android:textColor="@color/main_font_color"
+            android:textSize="12sp"
+            app:dayTime="@{weatherVo.dayTime}"
+            app:layout_constraintEnd_toStartOf="@id/image_detailaed_sky"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Morning" />
+
+        <TextView
+            android:id="@+id/detailed_temp_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_font_color"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/image_detailaed_sky"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailed_day_time_text"
+            app:temp="@{weatherVo.temp}"
+            tools:text="+ 36.6 C" />
+
+        <ImageView
+            android:id="@+id/image_detailaed_sky"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/an_image_of_sky_status"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:skyIcon="@{weatherVo.sky}"
+            tools:src="@drawable/ic_clear" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

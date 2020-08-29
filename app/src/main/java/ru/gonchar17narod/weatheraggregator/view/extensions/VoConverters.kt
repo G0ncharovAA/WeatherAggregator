@@ -11,6 +11,7 @@ import java.net.UnknownHostException
 
 fun WeatherEntity.toVo() =
     WeatherVo(
+        dayTime = dayTime,
         temp = temp.temperatureFormat(),
         sky = sky
     )

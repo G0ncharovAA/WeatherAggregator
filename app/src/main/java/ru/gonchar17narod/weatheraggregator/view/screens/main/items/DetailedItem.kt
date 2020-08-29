@@ -13,7 +13,7 @@ class DetailedItem(
 
     override fun bind(binding: ItemDetailedWeatherBinding, position: Int) {
         with(binding) {
-
+            weatherVo = this@DetailedItem.weatherVo
         }
     }
 }

@@ -118,6 +118,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider_second"
             app:spanCount="2"
+            app:weatherDetailed="@{dailyWeatherVo.detailed}"
             tools:itemCount="4"
             tools:listitem="@layout/item_detailed_weather" />
 
