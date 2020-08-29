@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Weather Aggregator</string>
 
+    <!--Content description-->
+    <string name="an_image_of_sky_status">An image of sky status</string>
+
+    <!--Weather statuses-->
+    <string name="status_clear">Clear</string>
+    <string name="status_clouds">Clouds</string>
+    <string name="status_rain">Rain</string>
+    <string name="status_snow">Snow</string>
+
     <!--Error Messages-->
     <string name="error_network">Cannot connect to server</string>
     <string name="error_location">Could not determine location</string>
