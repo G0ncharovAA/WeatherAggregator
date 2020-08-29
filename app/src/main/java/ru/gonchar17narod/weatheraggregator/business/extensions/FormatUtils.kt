@@ -2,16 +2,17 @@ package ru.gonchar17narod.weatheraggregator.business.extensions
 
 import ru.gonchar17narod.weatheraggregator.business.entities.DayTimes
 import java.util.Date
+import java.util.Locale
 import java.util.Calendar
 
 fun Double.kelvinToCelsius() =
     this - 273
 
 fun Double.format(digits: Int) =
-    "%.${digits}f".format(this)
-
-fun Double.toOneDigitFormat() =
-    format(1)
+    "%.${digits}f".format(
+        Locale.US,
+        this
+    )
 
 fun Double.toTwoDigitsFormat() =
     format(2)

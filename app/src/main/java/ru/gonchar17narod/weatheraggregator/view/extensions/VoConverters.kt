@@ -3,18 +3,15 @@ package ru.gonchar17narod.weatheraggregator.view.extensions
 import ru.gonchar17narod.weatheraggregator.business.entities.DailyWeather
 import ru.gonchar17narod.weatheraggregator.business.entities.WeatherEntity
 import ru.gonchar17narod.weatheraggregator.business.extensions.LocationException
-import ru.gonchar17narod.weatheraggregator.business.extensions.toOneDigitFormat
 import ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo
 import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
 import ru.gonchar17narod.weatheraggregator.view.vo.WeatherVo
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
-import java.text.SimpleDateFormat
-import java.util.Date
 
 fun WeatherEntity.toVo() =
     WeatherVo(
-        temp = temp.toOneDigitFormat(),
+        temp = temp.temperatureFormat(),
         sky = sky
     )
 
@@ -35,8 +32,3 @@ fun Exception.toVo() =
         is SecurityException -> ErrorVo.PermissionError(this)
         else -> ErrorVo.UnknownError(this)
     }
-
-private fun Date.toStringFormat() =
-    SimpleDateFormat
-        .getDateInstance()
-        .format(this)

@@ -8,9 +8,15 @@
             type="ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="some wether"
+            android:textColor="@color/main_font_color" />
+    </LinearLayout>
 </layout>

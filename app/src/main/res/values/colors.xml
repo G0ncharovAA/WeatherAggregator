@@ -5,4 +5,9 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="main_font_color">@android:color/white</color>
+
+    <color name="background_clear_color">#FF8A00</color>
+    <color name="background_clouds_color">#0F68D1</color>
+    <color name="background_rain_color">#8EA4A9</color>
+    <color name="background_snow_color">#A2C3D6</color>
 </resources>
