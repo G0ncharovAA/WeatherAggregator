@@ -7,6 +7,7 @@ import com.xwray.groupie.Group
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.gonchar17narod.weatheraggregator.business.DataState
+import ru.gonchar17narod.weatheraggregator.business.useCases.AdUseCase
 import ru.gonchar17narod.weatheraggregator.business.useCases.GetWeatherUseCase
 import ru.gonchar17narod.weatheraggregator.view.extensions.toDayItem
 import ru.gonchar17narod.weatheraggregator.view.extensions.toVo
@@ -15,6 +16,7 @@ import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
 
 class MainViewModel @ViewModelInject constructor(
     private val weatherInteractor: GetWeatherUseCase,
+    private val adInteractor: AdUseCase,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 

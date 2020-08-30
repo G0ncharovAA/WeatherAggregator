@@ -11,7 +11,6 @@ import com.xwray.groupie.GroupieViewHolder
 import ru.gonchar17narod.weatheraggregator.R
 import ru.gonchar17narod.weatheraggregator.business.entities.DayTimes
 import ru.gonchar17narod.weatheraggregator.business.entities.WeatherEntity
-import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DayItem
 import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DetailedItem
 import ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo
 import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
