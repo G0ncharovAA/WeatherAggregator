@@ -3,13 +3,14 @@ package ru.gonchar17narod.weatheraggregator.view.screens.main
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.xwray.groupie.Group
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.gonchar17narod.weatheraggregator.business.DataState
 import ru.gonchar17narod.weatheraggregator.business.useCases.GetWeatherUseCase
 import ru.gonchar17narod.weatheraggregator.view.extensions.toDayItem
 import ru.gonchar17narod.weatheraggregator.view.extensions.toVo
-import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DayItem
+import ru.gonchar17narod.weatheraggregator.view.screens.main.items.AdItem
 import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
 
 class MainViewModel @ViewModelInject constructor(
@@ -18,16 +19,16 @@ class MainViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     private val _liveProgress = MutableLiveData<Boolean>()
-    val liveProgress: MutableLiveData<Boolean>
+    val liveProgress: LiveData<Boolean>
         get() = _liveProgress
 
-    private val _liveDailyWeatherItems = MutableLiveData<List<DayItem>>()
-    val liveDailyWeatherItems: MutableLiveData<List<DayItem>>
-        get() = _liveDailyWeatherItems
-
     private val _liveErrorVo = MutableLiveData<ErrorVo>()
-    val liveErrorVo: MutableLiveData<ErrorVo>
+    val liveErrorVo: LiveData<ErrorVo>
         get() = _liveErrorVo
+
+    private val _liveContentGroups = MutableLiveData<List<Group>>()
+    val liveContentGroups: LiveData<List<Group>>
+        get() = _liveContentGroups
 
     val textState = MutableLiveData<String>()
 
@@ -50,8 +51,10 @@ class MainViewModel @ViewModelInject constructor(
                                     .toVo()
                                     .toDayItem()
                             }
+                                .plus(AdItem())
+                                .shuffled()
                         ) {
-                            _liveDailyWeatherItems.postValue(this)
+                            _liveContentGroups.postValue(this)
                             _liveProgress.postValue(false)
                             textState.postValue("success : ${this.size} days loaded")
                         }

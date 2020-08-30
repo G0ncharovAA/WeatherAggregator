@@ -1,11 +1,11 @@
 package ru.gonchar17narod.weatheraggregator.view.extensions
 
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.xwray.groupie.Group
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import ru.gonchar17narod.weatheraggregator.R
@@ -31,17 +31,26 @@ fun TextView.itemTextData(
         "today: ${dailyWeatherVo.date} \n ${dailyWeatherVo.conclusion.temp} celsius \n sky is ${dailyWeatherVo.conclusion.sky}"
 }
 
-@BindingAdapter("app:weatherDayItems")
-fun RecyclerView.weatherDayItems(
-    weatherData: List<DayItem>?
+@BindingAdapter("app:setGroupContent")
+fun RecyclerView.setGroupContent(
+    content: List<Group>?
 ) {
-    weatherData?.let {
+    content?.let {
         (adapter as? GroupAdapter)?.let {
             it.clear()
             it.addAll(
-                weatherData
+                content
             )
         }
+    }
+}
+
+@BindingAdapter("app:contentAdapter")
+fun RecyclerView.contentAdapter(
+    contentAdadpter: GroupAdapter<GroupieViewHolder>?
+) {
+    contentAdadpter?.let {
+        adapter = contentAdadpter
     }
 }
 
