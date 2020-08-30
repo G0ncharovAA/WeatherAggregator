@@ -7,7 +7,7 @@
 
         <variable
             name="mainviewmodel"
-            type="ru.gonchar17narod.weatheraggregator.view.screens.main.MainViewModel"/>
+            type="ru.gonchar17narod.weatheraggregator.view.screens.main.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,24 +22,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!"
-            app:textState="@{mainviewmodel.textState}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintVertical_bias="0.25"
+            app:textState="@{mainviewmodel.textState}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_days"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            app:weatherDataVo="@{mainviewmodel.liveDailyWeatherVo}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:weatherDayItems="@{mainviewmodel.liveDailyWeatherItems}"
             tools:itemCount="5"
             tools:listitem="@layout/item_daily_weather" />
 
@@ -52,11 +52,11 @@
             android:elevation="1dp"
             android:focusable="true"
             android:visibility="gone"
-            app:shouldBeSeen="@{mainviewmodel.liveProgress}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shouldBeSeen="@{mainviewmodel.liveProgress}"
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

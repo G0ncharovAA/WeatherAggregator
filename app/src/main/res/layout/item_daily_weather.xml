@@ -88,7 +88,7 @@
             android:layout_marginBottom="12dp"
             android:fontFamily="@font/gilroy_bold"
             android:textColor="@color/main_font_color"
-            android:textSize="73sp"
+            android:textSize="72sp"
             app:layout_constraintBottom_toTopOf="@+id/divider_second"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

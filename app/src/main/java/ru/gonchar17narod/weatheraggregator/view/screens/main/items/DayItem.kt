@@ -15,9 +15,9 @@ class DayItem(
 
     override fun bind(viewBinding: ItemDailyWeatherBinding, position: Int) {
         with(viewBinding) {
-            dailyWeatherVo = this@DayItem.dailyWeatherVo
             canGoBack = canGoBack(position)
             canGoFurther = canGoFurther(itemCount, position)
+            dailyWeatherVo = this@DayItem.dailyWeatherVo
         }
     }
 }

@@ -7,8 +7,9 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.gonchar17narod.weatheraggregator.business.DataState
 import ru.gonchar17narod.weatheraggregator.business.useCases.GetWeatherUseCase
+import ru.gonchar17narod.weatheraggregator.view.extensions.toDayItem
 import ru.gonchar17narod.weatheraggregator.view.extensions.toVo
-import ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo
+import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DayItem
 import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
 
 class MainViewModel @ViewModelInject constructor(
@@ -20,9 +21,9 @@ class MainViewModel @ViewModelInject constructor(
     val liveProgress: MutableLiveData<Boolean>
         get() = _liveProgress
 
-    private val _liveDailyWeatherVo = MutableLiveData<List<DailyWeatherVo>>()
-    val liveDailyWeatherVo: MutableLiveData<List<DailyWeatherVo>>
-        get() = _liveDailyWeatherVo
+    private val _liveDailyWeatherItems = MutableLiveData<List<DayItem>>()
+    val liveDailyWeatherItems: MutableLiveData<List<DayItem>>
+        get() = _liveDailyWeatherItems
 
     private val _liveErrorVo = MutableLiveData<ErrorVo>()
     val liveErrorVo: MutableLiveData<ErrorVo>
@@ -45,10 +46,12 @@ class MainViewModel @ViewModelInject constructor(
                     is DataState.Success -> {
                         with(
                             it.data.map {
-                                it.toVo()
+                                it
+                                    .toVo()
+                                    .toDayItem()
                             }
                         ) {
-                            _liveDailyWeatherVo.postValue(this)
+                            _liveDailyWeatherItems.postValue(this)
                             _liveProgress.postValue(false)
                             textState.postValue("success : ${this.size} days loaded")
                         }

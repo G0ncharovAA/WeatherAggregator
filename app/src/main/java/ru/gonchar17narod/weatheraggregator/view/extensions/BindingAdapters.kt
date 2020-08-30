@@ -15,7 +15,6 @@ import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DayItem
 import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DetailedItem
 import ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo
 import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
-import ru.gonchar17narod.weatheraggregator.view.vo.WeatherVo
 
 @BindingAdapter("app:textState")
 fun TextView.textState(
@@ -40,17 +39,15 @@ fun View.shouldBeSeen(seen: Boolean) {
         View.GONE
 }
 
-@BindingAdapter("app:weatherDataVo")
-fun RecyclerView.weatherDataVo(
-    weatherData: List<DailyWeatherVo>?
+@BindingAdapter("app:weatherDayItems")
+fun RecyclerView.weatherDayItems(
+    weatherData: List<DayItem>?
 ) {
     weatherData?.let {
         (adapter as? GroupAdapter)?.let {
             it.clear()
             it.addAll(
-                weatherData.map {
-                    DayItem(it)
-                }
+                weatherData
             )
         }
     }
@@ -98,15 +95,13 @@ fun TextView.daytime(dayTime: DayTimes) {
 
 @BindingAdapter("app:weatherDetailed")
 fun RecyclerView.weatherDetailed(
-    weatherDetailed: List<WeatherVo>
+    weatherDetailedItems: List<DetailedItem>
 ) {
     adapter =
         ((adapter ?: GroupAdapter<GroupieViewHolder>()) as? GroupAdapter)?.apply {
             clear()
             addAll(
-                weatherDetailed.map {
-                    DetailedItem(it)
-                }
+                weatherDetailedItems
             )
         }
 }
