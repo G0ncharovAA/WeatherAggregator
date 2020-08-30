@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import ru.gonchar17narod.weatheraggregator.business.DataState
 import ru.gonchar17narod.weatheraggregator.business.useCases.AdUseCase
 import ru.gonchar17narod.weatheraggregator.business.useCases.GetWeatherUseCase
+import ru.gonchar17narod.weatheraggregator.view.extensions.addAdItem
 import ru.gonchar17narod.weatheraggregator.view.extensions.toDayItem
 import ru.gonchar17narod.weatheraggregator.view.extensions.toVo
 import ru.gonchar17narod.weatheraggregator.view.screens.main.items.AdItem
@@ -35,10 +36,10 @@ class MainViewModel @ViewModelInject constructor(
     val textState = MutableLiveData<String>()
 
     init {
-        getWeather()
+        getContent()
     }
 
-    private fun getWeather() =
+    private fun getContent() =
         viewModelScope.launch {
             weatherInteractor.getWeather().collect {
                 when (it) {
@@ -53,8 +54,7 @@ class MainViewModel @ViewModelInject constructor(
                                     .toVo()
                                     .toDayItem()
                             }
-                                .plus(AdItem())
-                                .shuffled()
+                                .addAdItem(adInteractor.getAd())
                         ) {
                             _liveContentGroups.postValue(this)
                             _liveProgress.postValue(false)
