@@ -31,15 +31,6 @@ fun TextView.itemTextData(
         "today: ${dailyWeatherVo.date} \n ${dailyWeatherVo.conclusion.temp} celsius \n sky is ${dailyWeatherVo.conclusion.sky}"
 }
 
-@BindingAdapter("app:shouldBeSeen")
-fun View.shouldBeSeen(seen: Boolean) {
-    visibility = if (seen) {
-        View.VISIBLE
-    } else {
-        View.GONE
-    }
-}
-
 @BindingAdapter("app:weatherDayItems")
 fun RecyclerView.weatherDayItems(
     weatherData: List<DayItem>?

@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="mainviewmodel"
             type="ru.gonchar17narod.weatheraggregator.view.screens.main.MainViewModel" />
@@ -51,12 +53,11 @@
             android:clickable="true"
             android:elevation="1dp"
             android:focusable="true"
-            android:visibility="gone"
+            android:visibility="@{mainviewmodel.liveProgress ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shouldBeSeen="@{mainviewmodel.liveProgress}"
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
