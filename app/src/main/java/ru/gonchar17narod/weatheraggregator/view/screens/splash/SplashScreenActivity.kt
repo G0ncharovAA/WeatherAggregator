@@ -11,10 +11,11 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        if (checkPermissions())
+        if (checkPermissions()) {
             navigateToMainScreen()
-        else
+        } else {
             askForPermissions()
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -24,9 +25,10 @@ class SplashScreenActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (necessaryPermissionsGranted(requestCode, permissions, grantResults))
+        if (necessaryPermissionsGranted(requestCode, permissions, grantResults)) {
             navigateToMainScreen()
-        else
+        } else {
             finish()
+        }
     }
 }

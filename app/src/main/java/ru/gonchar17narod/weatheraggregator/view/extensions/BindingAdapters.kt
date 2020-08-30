@@ -33,10 +33,11 @@ fun TextView.itemTextData(
 
 @BindingAdapter("app:shouldBeSeen")
 fun View.shouldBeSeen(seen: Boolean) {
-    visibility = if (seen)
+    visibility = if (seen) {
         View.VISIBLE
-    else
+    } else {
         View.GONE
+    }
 }
 
 @BindingAdapter("app:weatherDayItems")
