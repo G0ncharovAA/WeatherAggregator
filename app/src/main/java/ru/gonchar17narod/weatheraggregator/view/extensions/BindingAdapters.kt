@@ -1,5 +1,6 @@
 package ru.gonchar17narod.weatheraggregator.view.extensions
 
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,7 +13,6 @@ import ru.gonchar17narod.weatheraggregator.R
 import ru.gonchar17narod.weatheraggregator.business.entities.DayTimes
 import ru.gonchar17narod.weatheraggregator.business.entities.WeatherEntity
 import ru.gonchar17narod.weatheraggregator.view.screens.main.items.DetailedItem
-import ru.gonchar17narod.weatheraggregator.view.vo.DailyWeatherVo
 import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
 
 @BindingAdapter("app:textState")
@@ -22,12 +22,28 @@ fun TextView.textState(
     text = state
 }
 
-@BindingAdapter("app:itemTextData")
-fun TextView.itemTextData(
-    dailyWeatherVo: DailyWeatherVo
-) {
-    text =
-        "today: ${dailyWeatherVo.date} \n ${dailyWeatherVo.conclusion.temp} celsius \n sky is ${dailyWeatherVo.conclusion.sky}"
+@BindingAdapter("app:skyBackgroundHeader")
+fun View.skyBackgroundHeader(sky: WeatherEntity.Drops) {
+    background = context.getDrawable(
+        when (sky) {
+            WeatherEntity.Drops.CLEAR -> R.drawable.gradient_clear_header
+            WeatherEntity.Drops.RAIN -> R.drawable.gradient_rain_header
+            WeatherEntity.Drops.SNOW -> R.drawable.gradient_snow_header
+            else -> R.drawable.gradient_background_clear_complete
+        }
+    )
+}
+
+@BindingAdapter("app:skyBackground")
+fun View.skyBackground(sky: WeatherEntity.Drops) {
+    background = context.getDrawable(
+        when (sky) {
+            WeatherEntity.Drops.CLEAR -> R.drawable.gradient_clear_background
+            WeatherEntity.Drops.RAIN -> R.drawable.gradient_rain_background
+            WeatherEntity.Drops.SNOW -> R.drawable.gradient_snow_background
+            else -> R.drawable.gradient_background_clear_complete
+        }
+    )
 }
 
 @BindingAdapter("app:setGroupContent")

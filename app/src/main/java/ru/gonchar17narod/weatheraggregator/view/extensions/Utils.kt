@@ -35,10 +35,14 @@ fun Double.temperatureFormat() =
     }.format(this)
 
 fun List<Group>.randomPosiotionInTheMiddle() =
-    Random.nextInt(
-        from = 1,
-        until = this.size - 1
-    )
+    if (size < 3) {
+        1
+    } else {
+        Random.nextInt(
+            from = 1,
+            until = this.size - 1
+        )
+    }
 
 fun List<Group>.insertElement(position: Int, element: Group) =
     subList(0, position)
@@ -52,10 +56,6 @@ fun List<Group>.insertElement(position: Int, element: Group) =
 
 fun List<Group>.addAdItem(ad: AdEntity) =
     insertElement(
-        if (size < 3) {
-            1
-        } else {
-            randomPosiotionInTheMiddle()
-        },
+        randomPosiotionInTheMiddle(),
         AdItem(ad)
     )
