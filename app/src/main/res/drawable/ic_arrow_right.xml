@@ -1,10 +1,15 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24"
-    android:tint="?attr/colorControlNormal">
+    android:width="30dp"
+    android:height="30dp"
+    android:viewportWidth="30"
+    android:viewportHeight="30">
   <path
-      android:fillColor="@android:color/white"
-      android:pathData="M22,12l-4,-4v3H3v2h15v3z"/>
+      android:pathData="M15,30C6.7699,30 0,23.2301 0,15C0,6.7699 6.7699,0 15,0C23.2301,0 30,6.7699 30,15C30,23.2301 23.2301,30 15,30ZM15,2.6549C8.2301,2.6549 2.6549,8.2301 2.6549,15C2.6549,21.7699 8.2301,27.3451 15,27.3451C21.7699,27.3451 27.3451,21.7699 27.3451,15C27.3451,8.2301 21.7699,2.6549 15,2.6549Z"
+      android:fillColor="@color/buttons_color"/>
+  <path
+      android:pathData="M14.2035,21.5044C13.8053,21.5044 13.5398,21.3717 13.2743,21.1062C12.7434,20.5752 12.7434,19.7788 13.2743,19.2478L17.5221,15L13.2743,10.7522C12.7434,10.2212 12.7434,9.4248 13.2743,8.8938C13.8053,8.3628 14.6018,8.3628 15.1327,8.8938L20.3097,14.0708C20.8407,14.6018 20.8407,15.3982 20.3097,15.9292L15.1327,21.1062C14.8673,21.3717 14.6018,21.5044 14.2035,21.5044Z"
+      android:fillColor="@color/buttons_color"/>
+  <path
+      android:pathData="M17.9204,16.3274H8.7611C7.9646,16.3274 7.4336,15.7964 7.4336,15C7.4336,14.2035 7.9646,13.6725 8.7611,13.6725H17.9204C18.7168,13.6725 19.2478,14.2035 19.2478,15C19.2478,15.6637 18.7168,16.3274 17.9204,16.3274Z"
+      android:fillColor="@color/buttons_color"/>
 </vector>

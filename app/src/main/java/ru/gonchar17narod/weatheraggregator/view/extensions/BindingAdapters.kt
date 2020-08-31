@@ -27,9 +27,9 @@ fun View.skyBackgroundHeader(sky: WeatherEntity.Drops) {
     background = context.getDrawable(
         when (sky) {
             WeatherEntity.Drops.CLEAR -> R.drawable.gradient_clear_header
+            WeatherEntity.Drops.CLOUDS -> R.drawable.gradient_clouds_header
             WeatherEntity.Drops.RAIN -> R.drawable.gradient_rain_header
             WeatherEntity.Drops.SNOW -> R.drawable.gradient_snow_header
-            else -> R.drawable.gradient_background_clear_complete
         }
     )
 }
@@ -39,9 +39,9 @@ fun View.skyBackground(sky: WeatherEntity.Drops) {
     background = context.getDrawable(
         when (sky) {
             WeatherEntity.Drops.CLEAR -> R.drawable.gradient_clear_background
+            WeatherEntity.Drops.CLOUDS -> R.drawable.gradient_clouds_background
             WeatherEntity.Drops.RAIN -> R.drawable.gradient_rain_background
             WeatherEntity.Drops.SNOW -> R.drawable.gradient_snow_background
-            else -> R.drawable.gradient_background_clear_complete
         }
     )
 }
