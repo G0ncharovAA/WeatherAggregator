@@ -10,15 +10,6 @@ import java.util.Date
 import java.util.Locale
 import kotlin.random.Random
 
-fun canGoBack(position: Int) =
-    position > 0
-
-fun canGoFurther(
-    itemCount: Int,
-    position: Int
-) =
-    itemCount > position + 1
-
 fun Date.toStringFormat() =
     SimpleDateFormat(
         "dd MMMM yyyy\nEEEE",

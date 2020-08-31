@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.SnapHelper
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
 import ru.gonchar17narod.weatheraggregator.R
 import ru.gonchar17narod.weatheraggregator.databinding.ActivityMainBinding
+import ru.gonchar17narod.weatheraggregator.view.extensions.smoothScrollBackwards
+import ru.gonchar17narod.weatheraggregator.view.extensions.smoothScrollForwards
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -34,8 +35,17 @@ class MainActivity : AppCompatActivity() {
 
         with(binding) {
             lifecycleOwner = this@MainActivity
-            snapHelper.attachToRecyclerView(recycler_days)
-            recyclerDays.adapter = groupAdapter
+
+            with(recyclerDays) {
+                snapHelper.attachToRecyclerView(this)
+                adapter = groupAdapter
+                buttonRight.setOnClickListener {
+                    smoothScrollForwards()
+                }
+                buttonLeft.setOnClickListener {
+                    smoothScrollBackwards()
+                }
+            }
 
             mainviewmodel = mainViewModel
         }

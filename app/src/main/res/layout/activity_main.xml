@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:elevation="1dp"
+            android:elevation="2dp"
             android:focusable="true"
             android:visibility="@{mainviewmodel.liveProgress ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -60,5 +60,35 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
+        <ImageView
+            android:id="@+id/button_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:clickable="true"
+            android:contentDescription="@string/roll_days_backwards"
+            android:elevation="1dp"
+            android:focusable="true"
+            android:padding="12dp"
+            android:src="@drawable/button_left_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_right"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/button_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:clickable="true"
+            android:contentDescription="@string/roll_days_forwards"
+            android:elevation="1dp"
+            android:focusable="true"
+            android:padding="12dp"
+            android:src="@drawable/button_right_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_left" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
