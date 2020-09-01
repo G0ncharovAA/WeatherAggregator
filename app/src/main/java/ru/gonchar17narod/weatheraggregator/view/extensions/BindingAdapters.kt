@@ -51,22 +51,19 @@ fun RecyclerView.setGroupContent(
     content: List<Group>?
 ) {
     content?.let {
-        (adapter as? GroupAdapter)?.let {
-            it.clear()
-            it.addAll(
-                content
-            )
-        }
+        (adapter as? GroupAdapter)
+            ?.updateAsync(content)
     }
 }
 
-@BindingAdapter("app:contentAdapter")
-fun RecyclerView.contentAdapter(
-    contentAdadpter: GroupAdapter<GroupieViewHolder>?
+@BindingAdapter("app:weatherDetailed")
+fun RecyclerView.weatherDetailed(
+    weatherDetailedItems: List<DetailedItem>
 ) {
-    contentAdadpter?.let {
-        adapter = contentAdadpter
-    }
+    adapter =
+        ((adapter ?: GroupAdapter<GroupieViewHolder>()) as? GroupAdapter)?.apply {
+            updateAsync(weatherDetailedItems)
+        }
 }
 
 @BindingAdapter("app:skyIcon")
@@ -107,19 +104,6 @@ fun TextView.daytime(dayTime: DayTimes) {
             DayTimes.EVENING -> R.string.evening
         }
     )
-}
-
-@BindingAdapter("app:weatherDetailed")
-fun RecyclerView.weatherDetailed(
-    weatherDetailedItems: List<DetailedItem>
-) {
-    adapter =
-        ((adapter ?: GroupAdapter<GroupieViewHolder>()) as? GroupAdapter)?.apply {
-            clear()
-            addAll(
-                weatherDetailedItems
-            )
-        }
 }
 
 @BindingAdapter("app:snackbarValues")
