@@ -28,11 +28,11 @@ class LocationRepository @Inject constructor(
                     fusedLocationProviderClient.lastLocation
                 ) {
                     addOnSuccessListener {
-//                        offer(DataState.Success(it.mockIfNull()))
-                        when (it) {
-                            is Location -> offer(DataState.Success(it))
-                            else -> offer(DataState.Error(LocationException()))
-                        }
+                        offer(DataState.Success(it.mockIfNull()))
+//                        when (it) {
+//                            is Location -> offer(DataState.Success(it))
+//                            else -> offer(DataState.Error(LocationException()))
+//                        }
                     }
                     addOnFailureListener {
                         offer(DataState.Error(it))
