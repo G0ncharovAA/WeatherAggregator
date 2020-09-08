@@ -9,12 +9,12 @@ def apiProperties = new Properties()
 apiProperties.load(project.rootProject.file('api.properties').newDataInputStream())
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "ru.gonchar17narod.weatheraggregator"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 30
         versionName "2.0"
 
