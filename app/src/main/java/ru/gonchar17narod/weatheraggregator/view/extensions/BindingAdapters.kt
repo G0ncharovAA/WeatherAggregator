@@ -62,7 +62,7 @@ fun RecyclerView.weatherDetailed(
 ) {
     adapter =
         ((adapter ?: GroupAdapter<GroupieViewHolder>()) as? GroupAdapter)?.apply {
-            updateAsync(weatherDetailedItems)
+            update(weatherDetailedItems)
         }
 }
 

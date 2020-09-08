@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
-def apiPropertiesFile = rootProject.file("api.properties");
+def apiPropertiesFile = rootProject.file("api.properties")
 def apiProperties = new Properties()
 apiProperties.load(new FileInputStream(apiPropertiesFile))
 
@@ -21,6 +21,8 @@ android {
         testInstrumentationRunner "ru.gonchar17narod.weatheraggregator.AppTestRunner"
 
         buildConfigField("String", "OWM_APP_ID", apiProperties['owm_app_id'])
+        buildConfigField("String", "ADMOB_APP_ID", apiProperties['admob_app_id'])
+        buildConfigField("String", "ADMOB_TEST_BANNER_ID", apiProperties['admob_test_banner_id'])
     }
 
     compileOptions {
