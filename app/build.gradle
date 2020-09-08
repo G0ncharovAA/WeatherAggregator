@@ -3,10 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'com.google.gms.google-services'
 
-def apiPropertiesFile = rootProject.file("api.properties")
 def apiProperties = new Properties()
-apiProperties.load(new FileInputStream(apiPropertiesFile))
+apiProperties.load(project.rootProject.file('api.properties').newDataInputStream())
 
 android {
     compileSdkVersion 29
@@ -18,11 +18,14 @@ android {
         versionCode 30
         versionName "2.0"
 
-        testInstrumentationRunner "ru.gonchar17narod.weatheraggregator.AppTestRunner"
+        manifestPlaceholders = [
+                adMobAppId: "${apiProperties.getProperty('admob_test_app_id')}"
+        ]
 
         buildConfigField("String", "OWM_APP_ID", apiProperties['owm_app_id'])
-        buildConfigField("String", "ADMOB_APP_ID", apiProperties['admob_app_id'])
         buildConfigField("String", "ADMOB_TEST_BANNER_ID", apiProperties['admob_test_banner_id'])
+
+        testInstrumentationRunner "ru.gonchar17narod.weatheraggregator.AppTestRunner"
     }
 
     compileOptions {
@@ -58,7 +61,7 @@ dependencies {
 
     //Recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    
+
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
@@ -86,6 +89,9 @@ dependencies {
 
     //Play services
     implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+    //AdMob
+    implementation 'com.google.firebase:firebase-ads:19.1.0'
 
     //Testing
     testImplementation 'junit:junit:4.12'

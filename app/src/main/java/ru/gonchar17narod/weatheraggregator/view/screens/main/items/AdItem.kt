@@ -3,6 +3,10 @@ package ru.gonchar17narod.weatheraggregator.view.screens.main.items
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_ad.view.*
@@ -18,11 +22,17 @@ class AdItem(
     override fun createViewHolder(itemView: View): GroupieViewHolder {
         Log.i("MyAd: ", "Created")
         return super.createViewHolder(itemView).apply {
-            itemView.item_ad_container.addView(
-                TextView(itemView.context).apply {
-                    text = "Happy coding!"
-                }
-            )
+           with(itemView.item_ad_container) {
+               addView(
+                    AdView(this.context).apply {
+                        adSize = AdSize.MEDIUM_RECTANGLE
+                        adUnitId = adEntity.bannerId
+                        loadAd(
+                            AdRequest.Builder().build()
+                        )
+                    }
+               )
+           }
         }
     }
 
