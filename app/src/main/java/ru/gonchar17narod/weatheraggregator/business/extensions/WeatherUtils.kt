@@ -15,7 +15,7 @@ fun List<WeatherEntity>.groupByDayTime() =
     }
 
 fun List<List<WeatherEntity>>.minusFirstElement() =
-    minusElement(this.first())
+    minusElement(first())
 
 fun List<WeatherEntity>.filterNight() =
     filter {
@@ -25,6 +25,15 @@ fun List<WeatherEntity>.filterNight() =
 fun List<WeatherEntity>.filterEvening() =
     filter {
         it.dayTime != DayTimes.EVENING
+    }
+
+fun List<WeatherEntity>.filterDayTimes() =
+    filterNight()
+        .filterEvening()
+
+fun List<List<WeatherEntity>>.filterValidDays() =
+    filter {
+        it.filterDayTimes().isNotEmpty()
     }
 
 fun List<WeatherEntity>.makeConclusion() =
@@ -54,18 +63,18 @@ fun List<WeatherEntity>.toDailyWeatherList(
             DailyWeather(
                 currentWeather.date,
                 currentWeather,
-                this.first()
+                first()
             )
         )
             .plus(
                 this
                     .minusFirstElement()
+                    .filterValidDays()
                     .map {
                         DailyWeather(
                             it.first().date,
                             it
-                                .filterNight()
-                                .filterEvening()
+                                .filterDayTimes()
                                 .makeConclusion(),
                             it
                         )

@@ -12,7 +12,6 @@ import ru.gonchar17narod.weatheraggregator.business.useCases.GetWeatherUseCase
 import ru.gonchar17narod.weatheraggregator.view.extensions.addAdItem
 import ru.gonchar17narod.weatheraggregator.view.extensions.toDayItem
 import ru.gonchar17narod.weatheraggregator.view.extensions.toVo
-import ru.gonchar17narod.weatheraggregator.view.screens.main.items.AdItem
 import ru.gonchar17narod.weatheraggregator.view.vo.ErrorVo
 
 class MainViewModel @ViewModelInject constructor(

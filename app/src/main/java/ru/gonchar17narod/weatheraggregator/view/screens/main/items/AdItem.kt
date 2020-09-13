@@ -2,11 +2,9 @@ package ru.gonchar17narod.weatheraggregator.view.screens.main.items
 
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_ad.view.*
