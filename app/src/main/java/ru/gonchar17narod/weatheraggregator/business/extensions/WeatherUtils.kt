@@ -28,7 +28,8 @@ fun List<WeatherEntity>.filterEvening() =
     }
 
 fun List<WeatherEntity>.filterDayTimes() =
-    filterNight()
+    this
+        .filterNight()
         .filterEvening()
 
 fun List<List<WeatherEntity>>.filterValidDays() =
@@ -41,7 +42,7 @@ fun List<WeatherEntity>.makeConclusion() =
         date = first().date,
         dayTime = first().dayTime,
         temp = map { it.temp }.average(),
-        sky = maxBy { it.sky.ordinal }?.sky ?: WeatherEntity.Drops.CLEAR
+        sky = maxByOrNull { it.sky.ordinal }?.sky ?: WeatherEntity.Drops.CLEAR
     )
 
 fun List<WeatherEntity>.concludeForecast() =
