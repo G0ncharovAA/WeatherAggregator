@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weather Today</string>
+    <string name="app_name">Погода Сегодня</string>
 
     <!--Content description-->
     <string name="an_image_of_sky_status">An image of sky status</string>

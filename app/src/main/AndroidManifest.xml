@@ -25,7 +25,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.screens.main.MainActivity" />
+        <activity
+            android:name=".view.screens.main.MainActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
