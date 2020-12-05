@@ -5,6 +5,7 @@
     <string name="an_image_of_sky_status">An image of sky status</string>
     <string name="roll_days_backwards">Roll days backwards</string>
     <string name="roll_days_forwards">Roll days forwards</string>
+    <string name="this_is_an_ad">This is an Ad page/nYour ad is now loading\nYou are free to scroll further</string>
 
     <!--Weather statuses-->
     <string name="status_clear">Clear</string>
