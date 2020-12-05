@@ -2,28 +2,28 @@
     <string name="app_name">Погода Сегодня</string>
 
     <!--Content description-->
-    <string name="an_image_of_sky_status">An image of sky status</string>
-    <string name="roll_days_backwards">Roll days backwards</string>
-    <string name="roll_days_forwards">Roll days forwards</string>
+    <string name="an_image_of_sky_status">Прогноз осадков</string>
+    <string name="roll_days_backwards">Листать дни назад</string>
+    <string name="roll_days_forwards">Листать дни вперед</string>
     <string name="this_is_an_ad">Это - рекламный блок\nВаша реклама сейчас загружается\nВы можете листать дальше</string>
 
     <!--Weather statuses-->
-    <string name="status_clear">Clear</string>
-    <string name="status_clouds">Clouds</string>
-    <string name="status_rain">Rain</string>
-    <string name="status_snow">Snow</string>
+    <string name="status_clear">Ясно</string>
+    <string name="status_clouds">Облачно</string>
+    <string name="status_rain">Дождь</string>
+    <string name="status_snow">Снег</string>
 
     <!--Error Messages-->
-    <string name="error_network">Cannot connect to server</string>
-    <string name="error_location">Could not determine location</string>
-    <string name="error_permission">Necessary permissions are not granted</string>
-    <string name="error_unknown">Unknown error. Please try again later</string>
-    <string name="error_ok">Try again</string>
+    <string name="error_network">Не удалось соединиться с сервером</string>
+    <string name="error_location">Не удалось поределить местоположение</string>
+    <string name="error_permission">Отстуствуют необходимые разрешения</string>
+    <string name="error_unknown">Неизвестная ошибка. Попробуйте позже</string>
+    <string name="error_ok">Позжу</string>
 
     <string name="temp_pattern">%1$s C</string>
     
-    <string name="night">Night</string>
-    <string name="morning">Morning</string>
-    <string name="noon">Noon</string>
-    <string name="evening">Evening</string>
+    <string name="night">Ночь</string>
+    <string name="morning">Утро</string>
+    <string name="noon">День</string>
+    <string name="evening">Вечер</string>
 </resources>

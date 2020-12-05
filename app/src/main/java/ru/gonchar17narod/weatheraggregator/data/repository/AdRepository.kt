@@ -8,5 +8,5 @@ import javax.inject.Inject
 class AdRepository @Inject constructor() : IAdRepository {
 
     override suspend fun loadAdData(): AdEntity =
-        AdEntity(BuildConfig.ADMOB_TEST_BANNER_ID)
+        AdEntity(BuildConfig.ADMOB_BANNER_ID)
 }

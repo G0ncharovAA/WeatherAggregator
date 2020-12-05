@@ -19,11 +19,11 @@ android {
         versionName "2.01"
 
         manifestPlaceholders = [
-                adMobAppId: "${apiProperties.getProperty('admob_test_app_id')}"
+                adMobAppId: "${apiProperties.getProperty('admob_app_id')}"
         ]
 
         buildConfigField("String", "OWM_APP_ID", apiProperties['owm_app_id'])
-        buildConfigField("String", "ADMOB_TEST_BANNER_ID", apiProperties['admob_test_banner_id'])
+        buildConfigField("String", "ADMOB_BANNER_ID", apiProperties['admob_banner_id'])
 
         testInstrumentationRunner "ru.gonchar17narod.weatheraggregator.AppTestRunner"
     }
