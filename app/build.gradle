@@ -15,8 +15,8 @@ android {
         applicationId "ru.gonchar17narod.weatheraggregator"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 31
-        versionName "2.01"
+        versionCode 32
+        versionName "2.02"
 
         manifestPlaceholders = [
                 adMobAppId: "${apiProperties.getProperty('admob_app_id')}"

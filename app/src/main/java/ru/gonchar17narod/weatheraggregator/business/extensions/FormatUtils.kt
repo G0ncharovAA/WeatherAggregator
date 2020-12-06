@@ -23,6 +23,9 @@ fun Date.toCalendar() =
 fun Calendar.day() =
     get(Calendar.DAY_OF_YEAR)
 
+fun Calendar.isTheSameDay(otherDate: Calendar) =
+    day() == otherDate.day()
+
 fun Calendar.dayTime() =
     when (get(Calendar.HOUR_OF_DAY)) {
         in (7..12) -> DayTimes.MORNING
